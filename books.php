@@ -1,9 +1,9 @@
 <?php
 include "dbConfig.php";
 session_start();
-$query = "select * from Users";
+$query = "select * from Books";
 $errorMessage = "";
-$user = mysqli_query($conn, $query);
+$books = mysqli_query($conn, $query);
 
 ?>
 
@@ -21,37 +21,43 @@ $user = mysqli_query($conn, $query);
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="./static/css/home.css" />
-    <title>Library - Home</title>
+    <title>Books</title>
   </head>
   <body>
     <?php include "templates/navbar.php" ?>
-    <div class="heading">Available Users</div>
-    <div class="table-responsive-lg">
+    <div class="heading">Available Books</div>
+    <div class=" table-responsive-md">
       <table class="table table-striped">
       
         <thead>
           <tr>
             <th scope="col">#</th>
-            <th scope="col">RegNo</th>
-            <th scope="col">Username</th>
-            <th scope="col">Semester</th>
-            <th scope="col">Department</th>
+            <th scope="col">Book ID</th>
+            <th scope="col">Book Name</th>
+            <th scope="col">Author</th>
+            <th scope="col">Genre</th>
+            <?php if($_SESSION["isAdmin"] == 1): ?>
             <th scope="col">Actions</th>
+            <?php endif; ?>
+            <th scope="col">Withdraw</th>
           </tr>
         </thead>
         <tbody>
        <?php
        $count = 0;
-       if(mysqli_num_rows($user) > 0){
-         while($table = mysqli_fetch_array($user)) {
+       if(mysqli_num_rows($books) > 0){
+         while($table = mysqli_fetch_array($books)) {
            $count += 1;
           echo "<tr>"; 
           echo "<th scope='row'>".$count."</th>";
-          echo "<td>".$table['regNo']."</td>";
-          echo "<td>".$table['username']."</td>";
-          echo "<td>".$table['sem']."</td>";
-          echo "<td>".$table['department']."</td>";
-          echo "<td><a href='deleteUser.php?id=".$table['regNo']."'>Delete</a></td>";
+          echo "<td>".$table['bid']."</td>";
+          echo "<td>".$table['bname']."</td>";
+          echo "<td>".$table['author']."</td>";
+          echo "<td>".$table['genre']."</td>";
+            if($_SESSION["isAdmin"] == 1){
+           echo "<td><a href='deleteBook.php?id=".$table['bid']."'>Delete</a></td>";
+        }
+        echo "<td><a href='withdraw.php?id=".$table['bid']."'>Withraw</a></td>";
           echo "</tr>";
          }
       }else {

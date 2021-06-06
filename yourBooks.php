@@ -1,10 +1,10 @@
 <?php
 include "dbConfig.php";
 session_start();
-$query = "select * from Users";
+$regno = $_SESSION["regNo"];
+$query = "select * from taken_books where regNo=$regno;";
 $errorMessage = "";
-$user = mysqli_query($conn, $query);
-
+$books = mysqli_query($conn, $query);
 ?>
 
 <!DOCTYPE html>
@@ -21,37 +21,37 @@ $user = mysqli_query($conn, $query);
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="./static/css/home.css" />
-    <title>Library - Home</title>
+    <title>Your Books</title>
   </head>
   <body>
     <?php include "templates/navbar.php" ?>
-    <div class="heading">Available Users</div>
-    <div class="table-responsive-lg">
+    <div class="heading">Books Withdrawn</div>
+    <div class=" table-responsive-md">
       <table class="table table-striped">
       
         <thead>
           <tr>
             <th scope="col">#</th>
-            <th scope="col">RegNo</th>
-            <th scope="col">Username</th>
-            <th scope="col">Semester</th>
-            <th scope="col">Department</th>
+            <th scope="col">Book ID</th>
+            <th scope="col">Book Name</th>
+            <th scope="col">Author</th>
+            <th scope="col">Genre</th>
             <th scope="col">Actions</th>
           </tr>
         </thead>
         <tbody>
        <?php
        $count = 0;
-       if(mysqli_num_rows($user) > 0){
-         while($table = mysqli_fetch_array($user)) {
+       if(mysqli_num_rows($books) > 0){
+         while($table = mysqli_fetch_array($books)) {
            $count += 1;
           echo "<tr>"; 
           echo "<th scope='row'>".$count."</th>";
-          echo "<td>".$table['regNo']."</td>";
-          echo "<td>".$table['username']."</td>";
-          echo "<td>".$table['sem']."</td>";
-          echo "<td>".$table['department']."</td>";
-          echo "<td><a href='deleteUser.php?id=".$table['regNo']."'>Delete</a></td>";
+          echo "<td>".$table['bid']."</td>";
+          echo "<td>".$table['bname']."</td>";
+          echo "<td>".$table['author']."</td>";
+          echo "<td>".$table['genre']."</td>";
+            echo "<td><a href='return.php?id=".$table['bid']."'>Return</a></td>";
           echo "</tr>";
          }
       }else {

@@ -1,0 +1,21 @@
+.heading {
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #423e37;
+  font-size: 18px;
+}
+
+/* .tableContainer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 0;
+}
+
+.tableContainer table {
+  width: 80%;
+} */

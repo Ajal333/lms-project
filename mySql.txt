@@ -1,0 +1,8 @@
+create database library;
+use library;
+
+create table Books(bname varchar(100), author varchar(100), genre varchar(100), bid int(100) not null, primary key(bid));
+
+create table Users(username varchar(100), sem int(2), department varchar(100), regNo int(10) not null, primary key(regNo), password varchar(200),isAdmin tinyint default 0);
+
+create table taken_books(bname varchar(100), author varchar(100), genre varchar(100), bid int(100) not null, primary key(bid),regNo int(10));
