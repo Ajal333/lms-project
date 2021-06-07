@@ -61,7 +61,7 @@ $books = mysqli_query($conn, $query);
           echo "</tr>";
          }
       }else {
-        echo "No data found";
+        echo "<p class='dangerText'>No data found</p>";
       }
        ?>
 

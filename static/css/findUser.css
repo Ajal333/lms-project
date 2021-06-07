@@ -1,11 +1,13 @@
-.heading {
+.formContainer {
   width: 100%;
-  padding: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #423e37;
-  font-size: 18px;
+  padding-bottom: 40px;
+}
+
+.formContainer form {
+  flex: 0.25;
 }
 
 .heading {

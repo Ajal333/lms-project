@@ -28,7 +28,6 @@ $user = mysqli_query($conn, $query);
     <div class="heading">Available Users</div>
     <div class="table-responsive-lg">
       <table class="table table-striped">
-      
         <thead>
           <tr>
             <th scope="col">#</th>
@@ -55,13 +54,12 @@ $user = mysqli_query($conn, $query);
           echo "</tr>";
          }
       }else {
-        echo "No data found";
+        echo "<p class='dangerText'>No data found</p>";
       }
        ?>
-
         </tbody>
       </table>
-    </section>
+    </div>
     <script
       src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
       integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"

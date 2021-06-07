@@ -7,7 +7,7 @@ main {
 
 .loginContainer {
   width: 40%;
-  height: 60vh;
+  height: 80vh;
   background-color: white;
   border-radius: 10px;
   box-shadow: 0px 0px 6px 0px #ccc;
@@ -32,4 +32,20 @@ main {
 
 .loginContainer form {
   flex: 0.75;
+}
+
+nav li {
+  padding: 0 10px;
+}
+
+nav .logo {
+  width: 40px;
+  height: 40px;
+}
+
+.dangerText {
+  color: #ff0000c9;
+  text-align: center;
+  margin: 10px 0;
+  font-size: 18px;
 }

@@ -91,10 +91,7 @@ if(isset($_POST['signup'])){ //check if form was submitted
               />
             </fieldset>
             <nav>
-              <input type="submit" name="signup" value="Sign Up" />
-              <div class="loginBtn">
-                <a class="btnLink" href="index.php">Already have an account?</a>
-              </div>
+              <input type="submit" name="signup" value="Add User" />
             </nav>
             <p>
             <?php echo $errorMessage ?>

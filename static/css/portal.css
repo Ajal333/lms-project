@@ -3,6 +3,14 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  height: fit-content;
+}
+
+.portal p {
+  color: #ff0000c9;
+  text-align: center;
+  margin: 10px 0;
+  font-size: 18px;
 }
 
 .portal fieldset {
