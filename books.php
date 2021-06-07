@@ -13,6 +13,8 @@ $books = mysqli_query($conn, $query);
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <link
       rel="stylesheet"
@@ -31,13 +33,13 @@ $books = mysqli_query($conn, $query);
       
         <thead>
           <tr>
-            <th scope="col">#</th>
+            <th scope="col">Sl.</th>
             <th scope="col">Book ID</th>
             <th scope="col">Book Name</th>
             <th scope="col">Author</th>
             <th scope="col">Genre</th>
             <?php if($_SESSION["isAdmin"] == 1): ?>
-            <th scope="col">Actions</th>
+            <th scope="col">Delete</th>
             <?php endif; ?>
             <th scope="col">Withdraw</th>
           </tr>
@@ -55,9 +57,9 @@ $books = mysqli_query($conn, $query);
           echo "<td>".$table['author']."</td>";
           echo "<td>".$table['genre']."</td>";
             if($_SESSION["isAdmin"] == 1){
-           echo "<td><a href='deleteBook.php?id=".$table['bid']."'>Delete</a></td>";
+           echo "<td><a href='deleteBook.php?id=".$table['bid']."'><i class='fas fa-trash' style='font-size: 20px; color: red'></i></a></td>";
         }
-        echo "<td><a href='withdraw.php?id=".$table['bid']."'>Withraw</a></td>";
+        echo "<td><a href='withdraw.php?id=".$table['bid']."'><i class='fas fa-plus-square' style='color:blue;font-size: 20px'></i></a></td>";
           echo "</tr>";
          }
       }else {

@@ -14,10 +14,11 @@ $bookData = mysqli_fetch_array($books);
 $bname = $bookData["bname"];
 $author = $bookData['author'];
 $genre = $bookData['genre'];
+$with_date = date('Y-m-d');
+$return_date = date("Y-m-d", strtotime("$with_date +10 days"));
 
-echo $bname;
 
-$addQuery = "INSERT INTO taken_books(bname, author, genre, bid, regNo) VALUES('$bname','$author','$genre','$id','$regNo');";
+$addQuery = "INSERT INTO taken_books(bname, author, genre, bid, regNo, withdrawn_Date, return_Date) VALUES('$bname','$author','$genre','$id','$regNo', '$with_date','$return_date');";
 $addToTaken = mysqli_query($conn, $addQuery);
 
 if ($addToTaken && mysqli_query($conn, $deleteQuery) ) {

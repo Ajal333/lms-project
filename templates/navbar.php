@@ -26,27 +26,68 @@
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
       <li class="nav-item active">
-        <a class="nav-link" href="books.php">Books</a>
+        <a class="nav-link" href="books.php">
+          <i class="fas fa-book" style="color: black; margin-right: 3px"></i>
+          Books</a
+        >
       </li>
       <li class="nav-item active">
-        <a class="nav-link" href="yourBooks.php">Your Books</a>
+        <a class="nav-link" href="yourBooks.php">
+          <i class="fas fa-book" style="color: black; margin-right: 3px"></i>
+          Your Books</a
+        >
       </li>
       <?php session_start(); if($_SESSION["isAdmin"] == 1): ?>
       <li class="nav-item active">
-        <a class="nav-link" href="home.php">Users</a>
+        <a class="nav-link" href="home.php">
+          <i class="fas fa-users" style="color: black; margin-right: 3px"></i>
+          Users</a
+        >
       </li>
       <li class="nav-item active">
-        <a class="nav-link" href="addBook.php">Add Books</a>
+        <a class="nav-link" href="addBook.php">
+          <i
+            class="fas fa-book-medical"
+            style="color: black; margin-right: 3px"
+          ></i>
+
+          Add Books</a
+        >
       </li>
       <li class="nav-item active">
-        <a class="nav-link" href="addUser.php">Add User</a>
+        <a class="nav-link" href="addUser.php">
+          <i
+            class="fas fa-user-plus"
+            style="color: black; margin-right: 3px"
+          ></i>
+
+          Add User</a
+        >
       </li>
       <li class="nav-item active">
-        <a class="nav-link" href="findUser.php">Find User</a>
+        <a class="nav-link" href="findUser.php">
+          <i class="fas fa-search" style="color: black; margin-right: 3px"></i>
+          Find User</a
+        >
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="withdrawnBooks.php">
+          <i
+            class="fas fa-book-open"
+            style="color: black; margin-right: 3px"
+          ></i>
+          Withdrawn Books</a
+        >
       </li>
       <?php endif; ?>
       <li class="nav-item active">
-        <a class="nav-link" href="logout.php">Logout</a>
+        <a class="nav-link" href="logout.php"
+          ><i
+            class="fas fa-power-off"
+            style="color: rgba(255, 0, 0, 0.87); margin-right: 5px"
+          ></i
+          >Logout</a
+        >
       </li>
     </ul>
   </div>

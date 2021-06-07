@@ -26,6 +26,7 @@ if(isset($_POST["search"])){
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <link
       rel="stylesheet"
@@ -65,12 +66,12 @@ if(isset($_POST["search"])){
                         
         <thead>
             <tr>
-                <th scope="col">#</th>
+                <th scope="col">Sl.</th>
             <th scope="col">RegNo</th>
             <th scope="col">Username</th>
             <th scope="col">Semester</th>
             <th scope="col">Department</th>
-            <th scope="col">Actions</th>
+            <th scope="col">Delete User</th>
         </tr>
     </thead>
     <tbody>
@@ -85,7 +86,7 @@ if(isset($_POST["search"])){
                         echo "<td>".$table['username']."</td>";
                         echo "<td>".$table['sem']."</td>";
                         echo "<td>".$table['department']."</td>";
-                        echo "<td><a href='deleteUser.php?id=".$table['regNo']."'>Delete</a></td>";
+                        echo "<td><a href='deleteUser.php?id=".$table['regNo']."'><i class='fas fa-trash' style='font-size: 20px; color: red'></i></a></td>";
                         echo "</tr>";
                     }
                 }else {
@@ -104,11 +105,16 @@ if(isset($_POST["search"])){
                         
         <thead>
             <tr>
-                <th scope="col">#</th>
+                <th scope="col">Sl.</th>
             <th scope="col">Book ID</th>
             <th scope="col">Book Name</th>
             <th scope="col">Autor</th>
             <th scope="col">Genre</th>
+            <th scope="col">Withdrawn Date</th>
+            <th scope="col">Due Date</th>
+            <?php if($_SESSION["isAdmin"] == 1): ?>
+            <th scope="col">Return Book</th>
+            <?php endif; ?>
             <!-- <th scope="col">Actions</th> -->
         </tr>
     </thead>
@@ -123,8 +129,13 @@ if(isset($_POST["search"])){
                         echo "<td>".$table['bid']."</td>";
                         echo "<td>".$table['bname']."</td>";
                         echo "<td>".$table['author']."</td>";
-                        echo "<td>".$table['genre']."</td>";
+                        echo "<td>".$table['genre']."</td>";    
+                        echo "<td>".$table['withdrawn_Date']."</td>";
+                        echo "<td>".$table['return_Date']."</td>";
                         // echo "<td><a href='deleteUser.php?id=".$table['regNo']."'>Delete</a></td>";
+                        if($_SESSION["isAdmin"] == 1){
+                            echo "<td><a href='return.php?regNo=".$_POST['regNo']."&id=".$table['bid']."'><i class='fas fa-undo-alt' style='font-size: 20px; color: green'></i></a></td>";
+                         }
                         echo "</tr>";
                     }
                 }else {

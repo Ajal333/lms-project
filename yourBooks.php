@@ -13,6 +13,7 @@ $books = mysqli_query($conn, $query);
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <link
       rel="stylesheet"
@@ -31,12 +32,16 @@ $books = mysqli_query($conn, $query);
       
         <thead>
           <tr>
-            <th scope="col">#</th>
+            <th scope="col">Sl.</th>
             <th scope="col">Book ID</th>
             <th scope="col">Book Name</th>
             <th scope="col">Author</th>
             <th scope="col">Genre</th>
-            <th scope="col">Actions</th>
+            <th scope="col">Date Taken</th>
+            <th scope="col">Due Date</th>
+            <?php if($_SESSION["isAdmin"] == 1): ?>
+            <th scope="col">Return Book</th>
+            <?php endif; ?>
           </tr>
         </thead>
         <tbody>
@@ -51,7 +56,11 @@ $books = mysqli_query($conn, $query);
           echo "<td>".$table['bname']."</td>";
           echo "<td>".$table['author']."</td>";
           echo "<td>".$table['genre']."</td>";
-            echo "<td><a href='return.php?id=".$table['bid']."'>Return</a></td>";
+          echo "<td>".$table['withdrawn_Date']."</td>";
+          echo "<td>".$table['return_Date']."</td>";
+          if($_SESSION["isAdmin"] == 1){
+            echo "<td><a href='return.php?regNo=".$_SESSION['regNo']."&id=".$table['bid']."'><i class='fas fa-undo-alt' style='font-size: 20px; color: green'></i></a></td>";
+         }
           echo "</tr>";
          }
       }else {

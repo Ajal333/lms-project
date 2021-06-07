@@ -10,6 +10,7 @@ include "dbConfig.php";
   $author = $_POST['author']; 
   $genre = $_POST['genre']; 
   $bid = $_POST['bid']; 
+  $date = date('Y-m-d');
 
   if($bname && $author && $genre && $bid) {
         $bookCheckQuery = "Select * from Books where bid = '$bid';";
@@ -17,7 +18,8 @@ include "dbConfig.php";
         if(mysqli_num_rows($bookCheck) > 0){
             $errorMessage = "The book is already present.";
         }else{
-            $query = "insert into Books(bname, author, genre, bid) values('$bname','$author','$genre','$bid');";
+            $query = "insert into Books(bname, author, genre, bid, date) values('$bname','$author','$genre','$bid','$date');";
+            echo query;
             $books = mysqli_query($conn, $query);
             if($books){
                 header("Location: books.php");
@@ -39,6 +41,7 @@ include "dbConfig.php";
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link
       rel="stylesheet"
       href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"

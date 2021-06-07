@@ -2,7 +2,7 @@
 <?php
 session_start();
 $id = $_GET['id'];
-$regNo = $_SESSION["regNo"];
+$regNo = $_GET["regNo"];
 include "dbConfig.php";
 // sql to delete a record
 $getBook = "SELECT * FROM taken_books WHERE bid = $id";
